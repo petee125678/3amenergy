@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <head><title>STAY AWAKE</title></head>
+
+
+
+
+        <img src="low-quality-image-removebg-preview__1_-removebg-preview.png" id="drink" onclick="fill()"> 
+        <img src="image-removebg-preview (2).png" id="desk">
+        <div id="alarmclock">3:00</div>
+        <div id="stamina">100</div>
+    </body>
+    <style>
+        body{background-color: black;}
+        #desk {
+            z-index: 0;
+            display: block;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        #drink {
+            z-index: 100;
+        position: fixed;   
+    bottom:0;
+    margin-bottom: 30px;
+    }
+    #alarmclock {
+        font-family: ate;
+        font-size: 125px;
+        height: 120px;
+        width: 220px;
+        color: red;
+        position: fixed;
+        z-index: 1000;
+        border-color: rgb(57, 57, 57);
+        border-style: solid;
+        border-width: 10px;
+        background-color: rgb(40, 39, 39);
+        bottom: 0;
+        right   : 0;
+        margin-bottom: 60px;
+        margin-right: 50px;
+        }
+    #stamina {font-family: ate;
+        font-size: 125px;
+        height: 120px;
+        width: 275px;
+        color: red;
+        position: fixed;
+        z-index: 1000;
+        border-color: rgb(57, 57, 57);
+        border-style: solid;
+        border-width: 10px;
+        background-color: rgb(40, 39, 39);
+        bottom: 0;
+        right   : 0;
+        margin-bottom: 60px;
+        margin-right: 350px;}
+   
+    @font-face {
+font-family:'ate';
+src:url(Seven\ Segment.ttf) format("opentype");
+font-display:swap;
+}
+    </style>
+
+    <script>
+        let time = 0
+        let stamina = 100
+        let increase = 1
+        let hour = 3 
+        function fill() {
+           stamina = stamina+10-(increase*2)
+        }
+        setInterval(() => {
+            time++
+            if (time>60) {hour++;time=0}
+            if (time<10) {time= "0"+time}
+            document.getElementById("alarmclock").textContent = hour+":"+time 
+            increase = increase+0.25
+            stamina = stamina - increase
+            if (stamina<=0) {location.reload();} 
+            document.getElementById("stamina").textContent = stamina
+        },1000)
+
+
+    </script>
+</html>
